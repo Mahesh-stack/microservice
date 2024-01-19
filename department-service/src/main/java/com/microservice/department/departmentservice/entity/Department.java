@@ -1,20 +1,22 @@
 package com.microservice.department.departmentservice.entity;
 
-import jakarta.persistence.*;
+
 import lombok.*;
-@Entity
+
+import java.util.List;
+
+//@Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "Department")
+//@Table(name = "Department")
 public class Department {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String departmentName;
-    private String departmentLocation;
-    private String departmentCode;
+  //  @Id
+ //   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private List<Employee> employees;
 }
