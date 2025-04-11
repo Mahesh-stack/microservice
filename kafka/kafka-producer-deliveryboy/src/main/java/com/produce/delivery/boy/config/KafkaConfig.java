@@ -16,4 +16,9 @@ public class KafkaConfig {
                 .name(AppConstant.LOCATION_UPDATE_TOPIC)
                 .build();
     }
+
+    @Bean
+    public NewTopic newTopic() {
+        return TopicBuilder.name(AppConstant.EMPLOYEE_DATA).build();
+    }
 }
