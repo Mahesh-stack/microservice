@@ -19,7 +19,7 @@ public class HomeController {
 
     @PostMapping("/update")
     public ResponseEntity<?> updateLocation() {
-        kafkaService.updateLocation("( " + Math.round(Math.random() * 100) + ")");
+        kafkaService.updateLocation("( " + Math.round(Math.random() * 100) + " , " + Math.round(Math.random() * 100) + " )");
         return new ResponseEntity<>(Map.of("message", "location updated"), HttpStatus.OK);
     }
 }
