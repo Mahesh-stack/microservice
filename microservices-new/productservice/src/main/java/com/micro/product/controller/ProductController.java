@@ -30,4 +30,9 @@ public class ProductController {
     public List<ProductResponse> extractProducts() {
         return productService.extractAllProducts();
     }
+
+    @GetMapping("/Id")
+    public ResponseEntity<ProductResponse> getProductById(@RequestParam String id){
+        return ResponseEntity.ok(productService.getProductById(id));
+    }
 }

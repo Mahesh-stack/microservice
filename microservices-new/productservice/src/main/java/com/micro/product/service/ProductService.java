@@ -2,11 +2,11 @@ package com.micro.product.service;
 
 import com.micro.product.dto.ProductRequest;
 import com.micro.product.dto.ProductResponse;
+import com.micro.product.exceptions.ProductNotFoundException;
 import com.micro.product.model.Product;
 import com.micro.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +45,21 @@ public class ProductService {
                 .price(product.getPrice())
                 .build();
 
+    }
+
+    public ProductResponse getProductById(String id) {
+
+        Product product =
+                productRepository
+                        .findById(id)
+                        .orElseThrow(() ->
+                                new ProductNotFoundException("Product with " + id + "Not Found"));
+
+        return ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .description(product.getDescription())
+                .build();
     }
 }
